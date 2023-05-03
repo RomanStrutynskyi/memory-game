@@ -1,0 +1,45 @@
+// Light mode colors
+$primary: #4f46e5;
+$secondary: #cbd5e1;
+$background: #ffffff;
+$card-background: #ffffff;
+$text: #212529;
+
+// Dark mode colors
+$primary-dark: #4e46e5;
+$secondary-dark: #1e293b;
+$background-dark: #293445;
+$card-background-dark: #1e293b;
+$text-dark: #f8f9fa;
+
+@mixin theme($mode: "light") {
+  @if $mode == "dark" {
+    --primary-color: #{$primary-dark};
+    --primary-color-hover: #{lighten($primary-dark, 3)};
+    --primary-color-active: #{darken($primary-dark, 3)};
+    --secondary-color: #{$secondary-dark};
+    --secondary-color-hover: #{lighten($secondary-dark, 3)};
+    --secondary-color-active: #{darken($secondary-dark, 3)};
+    --background-color: #{$background-dark};
+    --card-background-color: #{$card-background-dark};
+    --text-color: #{$text-dark};
+  } @else {
+    --primary-color: #{$primary};
+    --primary-color-hover: #{lighten($primary, 3)};
+    --primary-color-active: #{darken($primary, 3)};
+    --secondary-color: #{$secondary};
+    --secondary-color-hover: #{lighten($secondary, 3)};
+    --secondary-color-active: #{darken($secondary, 3)};
+    --background-color: #{$background};
+    --card-background-color: #{$card-background};
+    --text-color: #{$text};
+  }
+}
+
+@mixin fillContent($text, $times) {
+  $output: "";
+  @for $i from 1 through $times {
+    $output: $output + $text;
+  }
+  content: $output;
+}
